@@ -1,3 +1,7 @@
+/**
+ *      Android Project
+ *      BASSEZ Martin, BRUGE Fabien, LICETTE Matthieu, TE Nicolas
+ */
 package fr.yncrea.anfroid_project;
 
 import androidx.appcompat.app.AppCompatActivity;
