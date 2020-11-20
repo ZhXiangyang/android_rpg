@@ -1,31 +1,29 @@
 package fr.yncrea.anfroid_project;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 import retrofit2.Retrofit;
-import fr.yncrea.anfroid_project.GetJsonApi;
+import retrofit2.converter.gson.GsonConverterFactory;
+import fr.yncrea.anfroid_project.api.GetJson;
+import fr.yncrea.anfroid_project.model.EventsList;
+import fr.yncrea.anfroid_project.model.ActionsList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GetJsonApi eventsList;
+    private GetJson eventsList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://github.com/DasNesel/AndroidStorie/blob/main/story.json")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        eventsList = retrofit.create(GetJson.class);
     }
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://swapi.dev/api/")
-            .build();
 
-    eventsList = retrofit.create(getJsonApi.class);
 }
