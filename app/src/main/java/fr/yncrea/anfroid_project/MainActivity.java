@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import fr.yncrea.anfroid_project.api.GetJson;
+
 import fr.yncrea.anfroid_project.model.EventsList;
 import fr.yncrea.anfroid_project.model.ActionsList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GetJson eventsList;
+    private EventsList eventsList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        eventsList = retrofit.create(GetJson.class);
+        eventsList = retrofit.create(EventsList.class);
     }
-
 
 }
