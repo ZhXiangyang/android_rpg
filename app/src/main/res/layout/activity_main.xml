@@ -8,28 +8,32 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="391dp"
-        android:layout_height="725dp"
+        android:id="@+id/prez"
+        android:layout_width="363dp"
+        android:layout_height="231dp"
         android:fontFamily="serif-monospace"
-        android:text="Salut cher joueur ! ☺\n\nDans ce jeu tu vas incarner le personnage Jean Ti.
-        \n\nNous sommes au milieu du moyen âge et tu es chargé de t'occuper de l'hygiène du Roi Incompetent VI
-        qui est vieillisant et à moitié aveugle.
-        \n\nUn jour, le prince Marc Guffin, fils de ton cher Roi, est kidnappé par son ennemi juré :
-        le Seigneur Anto Ganiste\n\nLe Roi, ne souhaitant pas ébruité l'affaire afin de ne pas inquiéter
-        les habitants du royaume et de ne pas mettre en avant son ennemi juré, décida alors de faire appel
-        à son meilleur guerrier pour l'envoyer en mission secrète de sauvetage.\n\nMalheureusement c'est à
-        ce moment que tu es entré dans la chambre du Roi pour vider son pot de chambre et t'as pris pour son
-        meilleur guerrier. Te voilà maintenant affublé de vêtements de camouflages grossiers, d'une carte
-        qui mène chez le méchant, mais aussi d'un épluche patate et du pot de chambre plein"
+        android:text="@string/prez1"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079" />
+        app:layout_constraintVertical_bias="0.316" />
+
+    <Button
+        android:id="@+id/buttonSuite"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="68dp"
+        android:onClick="suiteFunction"
+        android:text="@string/suite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prez" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

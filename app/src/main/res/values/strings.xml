@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">anfroid_project</string>
+    <string name="suite">Suite</string>
+    <string name="go">C\'est Parti</string>
+    <string name="prez1">Salut cher joueur ! ☺\n\nDans ce jeu, tu vas incarner le personnage Jean Ti.</string>
+    <string name="prez2">Nous sommes au milieu du moyen âge et tu es chargé de t\'occuper de l\'hygiène du Roi Incompetent VI qui est vieillisant et à moitié aveugle.</string>
+    <string name="prez3">Un jour, le prince Marc Guffin, fils de ton cher Roi, est kidnappé par son ennemi juré : \n\nle Seigneur Anto Ganiste</string>
+    <string name="prez4">Le Roi, ne souhaitant pas ébruité l\'affaire afin de ne pas inquiéter les habitants du royaume et de ne pas mettre en avant son ennemi juré, décida alors de faire appel à son meilleur guerrier pour l\'envoyer en mission secrète de sauvetage.</string>
+    <string name="prez5">Malheureusement, c\'est à ce moment que tu es entré dans la chambre du Roi pour vider son pot de chambre et t\'a pris pour son meilleur guerrier.</string>
+    <string name="prez6">Te voilà maintenant affublé de vêtements de camouflages grossiers, d\'une carte qui mène chez le méchant, mais aussi d\'un épluche patate et du pot de chambre plein</string>
 </resources>
