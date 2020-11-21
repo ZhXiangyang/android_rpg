@@ -14,11 +14,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.List;
 
+import fr.yncrea.android_rpg.model.ActionsList;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import fr.yncrea.android_rpg.model.ActionsList;
 import fr.yncrea.android_rpg.model.EventsList;
 import fr.yncrea.android_rpg.api.GetEvents;
 
@@ -65,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
     private void getJson() throws IOException {
         Response<EventsList> response = eventsList.getEvents().execute();
         if (response.isSuccessful()) {
-
-            Log.d("test", "success");
+            List<ActionsList> actionsList = response.body().possibleActions;
+            Log.d("getJson", "success");
         }
     }
 }
