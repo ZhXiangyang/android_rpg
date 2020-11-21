@@ -1,0 +1,129 @@
+Index: app/src/main/java/fr/yncrea/anfroid_project/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/**\r\n *      Android Project\r\n *      BASSEZ Martin, BRUGE Fabien, LICETTE Matthieu, TE Nicolas\r\n */\r\npackage fr.yncrea.anfroid_project;\r\n\r\nimport androidx.annotation.XmlRes;\r\n\r\nimport android.os.Bundle;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\n\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.TextView;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\nimport java.io.IOException;\r\nimport java.util.List;\r\nimport java.util.concurrent.Executor;\r\nimport java.util.concurrent.Executors;\r\nimport java.util.stream.Collectors;\r\n\r\nimport retrofit2.Response;\r\nimport retrofit2.Retrofit;\r\nimport retrofit2.converter.gson.GsonConverterFactory;\r\n\r\nimport fr.yncrea.anfroid_project.model.EventsList;\r\nimport fr.yncrea.anfroid_project.api.GetEvents;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    private GetEvents eventsList;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);\r\n    }\r\n\r\n    public void suiteFunction(View view) {\r\n        TextView message = (TextView)findViewById(R.id.prez);\r\n        Button suiteBtn = (Button)findViewById(R.id.buttonSuite);\r\n        if(message.getText().toString().contains(\"Salut\")){\r\n            message.setText(R.string.prez2);\r\n        }\r\n        else if(message.getText().toString().contains(\"moyen\")){\r\n            message.setText(R.string.prez3);\r\n        }\r\n        else if(message.getText().toString().contains(\"Guffin\")){\r\n            message.setText(R.string.prez4);\r\n        }\r\n        else if(message.getText().toString().contains(\"souhaitant\")){\r\n            message.setText(R.string.prez5);\r\n        }\r\n        else if(message.getText().toString().contains(\"Malheureusement\")){\r\n            message.setText(R.string.prez6);\r\n            suiteBtn.setText(R.string.go);\r\n        }\r\n        Log.d(\"myTAG\", \"suiteFunction: \"+message.getText());\r\n      \r\n        Retrofit retrofit = new Retrofit.Builder()\r\n                .baseUrl(\"https://dasnesel.github.io/AndroidStory/\")\r\n                .addConverterFactory(GsonConverterFactory.create())\r\n                .build();\r\n\r\n        eventsList = retrofit.create(GetEvents.class);\r\n    }\r\n\r\n    private void getJson() {\r\n        Response<GetEvents> response = eventsList;\r\n        if (response != null) {\r\n            Log.d(\"test\", \"success\");\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/fr/yncrea/anfroid_project/MainActivity.java	(revision 1cd59622ad81ae72d0676354aa54f715e9264eec)
++++ app/src/main/java/fr/yncrea/anfroid_project/MainActivity.java	(date 1605951903519)
+@@ -11,21 +11,19 @@
+ import androidx.appcompat.app.AppCompatActivity;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+-
+ import android.os.Bundle;
+ import android.util.Log;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.TextView;
+ 
+-public class MainActivity extends AppCompatActivity {
+-
+ import java.io.IOException;
+ import java.util.List;
+ import java.util.concurrent.Executor;
+ import java.util.concurrent.Executors;
+ import java.util.stream.Collectors;
+ 
++import retrofit2.Call;
+ import retrofit2.Response;
+ import retrofit2.Retrofit;
+ import retrofit2.converter.gson.GsonConverterFactory;
+@@ -41,7 +39,13 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+ 
+-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
++        Retrofit retrofit = new Retrofit.Builder()
++                .baseUrl("https://dasnesel.github.io/AndroidStory/")
++                .addConverterFactory(GsonConverterFactory.create())
++                .build();
++
++        eventsList = retrofit.create(GetEvents.class);
++        // RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
+     }
+ 
+     public void suiteFunction(View view) {
+@@ -64,19 +68,15 @@
+             suiteBtn.setText(R.string.go);
+         }
+         Log.d("myTAG", "suiteFunction: "+message.getText());
+-      
+-        Retrofit retrofit = new Retrofit.Builder()
+-                .baseUrl("https://dasnesel.github.io/AndroidStory/")
+-                .addConverterFactory(GsonConverterFactory.create())
+-                .build();
++
+ 
+-        eventsList = retrofit.create(GetEvents.class);
+     }
+ 
+-    private void getJson() {
+-        Response<GetEvents> response = eventsList;
+-        if (response != null) {
++    private void getJson() throws IOException {
++        Response<EventsList> response = eventsList.getEvents().execute();
++        if (response.isSuccessful()) {
+             Log.d("test", "success");
+         }
+     }
++
+ }
+\ No newline at end of file
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Mon Nov 09 15:40:36 CET 2020\r\n\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\n\r\n//distributionUrl=https\\://services.gradle.org/distributions/gradle-6.5-bin.zip\r\n\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-6.5-all.zip\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-31j
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision 1cd59622ad81ae72d0676354aa54f715e9264eec)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1605950871977)
+@@ -5,7 +5,5 @@
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+ 
+-//distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-bin.zip
+-
+ distributionUrl=https\://services.gradle.org/distributions/gradle-6.5-all.zip
+ 
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.2\"\r\n\r\n    defaultConfig {\r\n        applicationId \"fr.yncrea.anfroid_project\"\r\n        minSdkVersion 26\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'\r\n    implementation 'androidx.recyclerview:recyclerview:1.1.0'\r\n    testImplementation 'junit:junit:4.13.1'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n    implementation 'com.android.support:recyclerview-v7'\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 1cd59622ad81ae72d0676354aa54f715e9264eec)
++++ app/build.gradle	(date 1605951017574)
+@@ -32,4 +32,12 @@
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+     implementation 'com.android.support:recyclerview-v7'
+ 
++    def room_version = "2.2.5"
++    implementation "androidx.room:room-runtime:$room_version"
++    annotationProcessor "androidx.room:room-compiler:$room_version"
++
++    implementation 'com.google.code.gson:gson:2.8.6' // traite les fichiers json
++    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // fait les appels REST
++    // permet de supporter les retours json dans les appels REST
++    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+ }
+\ No newline at end of file
+Index: app/src/main/java/fr/yncrea/anfroid_project/api/GetEvents.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package fr.yncrea.anfroid_project.api;\r\n\r\nimport fr.yncrea.anfroid_project.model.EventsList;\r\nimport retrofit2.Call;\r\nimport retrofit2.http.GET;\r\n\r\npublic interface GetEvents {\r\n    @GET(\"story.json\")\r\n    Call<EventsList> getEvents();\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/fr/yncrea/anfroid_project/api/GetEvents.java	(revision 1cd59622ad81ae72d0676354aa54f715e9264eec)
++++ app/src/main/java/fr/yncrea/anfroid_project/api/GetEvents.java	(date 1605951943747)
+@@ -6,5 +6,5 @@
+ 
+ public interface GetEvents {
+     @GET("story.json")
+-    Call<EventsList> getEvents();
++    Call<EventsList> getEvents(); // à checker
+ }
