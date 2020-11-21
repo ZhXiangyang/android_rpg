@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://dasnesel.github.io/AndroidStory/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        eventsList = retrofit.create(GetEvents.class);
         //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
     }
 
@@ -62,13 +68,6 @@ public class MainActivity extends AppCompatActivity {
             suiteBtn.setText(R.string.go);
         }
         Log.d("myTAG", "suiteFunction: "+message.getText());
-      
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://dasnesel.github.io/AndroidStory/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        eventsList = retrofit.create(GetEvents.class);
     }
 
     /*private void getJson() {
