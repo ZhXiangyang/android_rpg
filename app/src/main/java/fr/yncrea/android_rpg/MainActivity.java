@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         eventsList = retrofit.create(GetEvents.class);
+
+        //getJson();
         // RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
     }
 
@@ -65,11 +67,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void getJson() throws IOException {
-        Response<EventsList> response = eventsList.getEvents().execute();
-        if (response.isSuccessful()) {
-            List<ActionsList> actionsList = response.body().possibleActions;
-            Log.d("getJson", "success");
+    private void getJson() {
+        try {
+            Response<EventsList> response = eventsList.getEvents().execute();
+            if (response.isSuccessful()) {
+                List<ActionsList> actionsList = response.body().possibleActions;
+                Log.d("getJson", "success");
+            } else {
+                Log.w("getJson", "fail");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
