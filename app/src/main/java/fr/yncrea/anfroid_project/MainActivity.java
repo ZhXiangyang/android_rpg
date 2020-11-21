@@ -9,6 +9,7 @@ import androidx.annotation.XmlRes;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -32,11 +33,15 @@ import fr.yncrea.anfroid_project.model.EventsList;
 import fr.yncrea.anfroid_project.api.GetEvents;
 
 public class MainActivity extends AppCompatActivity {
+    ConstraintLayout layout = null;
+    TextView text = null;
 
-    private GetEvents eventsList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        layout = (ConstraintLayout) ConstraintLayout.inflate(this, R.layout.activity_main, null);
+
+
         setContentView(R.layout.activity_main);
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -44,36 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        eventsList = retrofit.create(GetEvents.class);
+        GetEvents eventsList = retrofit.create(GetEvents.class);
         //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
     }
 
-    public void suiteFunction(View view) {
-        TextView message = (TextView)findViewById(R.id.prez);
-        Button suiteBtn = (Button)findViewById(R.id.buttonSuite);
-        if(message.getText().toString().contains("Salut")){
-            message.setText(R.string.prez2);
-        }
-        else if(message.getText().toString().contains("moyen")){
-            message.setText(R.string.prez3);
-        }
-        else if(message.getText().toString().contains("Guffin")){
-            message.setText(R.string.prez4);
-        }
-        else if(message.getText().toString().contains("souhaitant")){
-            message.setText(R.string.prez5);
-        }
-        else if(message.getText().toString().contains("Malheureusement")){
-            message.setText(R.string.prez6);
-            suiteBtn.setText(R.string.go);
-        }
-        Log.d("myTAG", "suiteFunction: "+message.getText());
-    }
 
-    /*private void getJson() {
-        Response<GetEvents> response = eventsList;
-        if (response != null) {
-            Log.d("test", "success");
-        }
-    }*/
 }
