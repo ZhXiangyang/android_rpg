@@ -11,14 +11,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-public class MainActivity extends AppCompatActivity {
 
 import java.io.IOException;
 import java.util.List;
@@ -26,6 +23,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
+import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -41,12 +39,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://dasnesel.github.io/AndroidStory/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        eventsList = retrofit.create(GetEvents.class);
+        // RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
     }
 
     public void suiteFunction(View view) {
-        TextView message = (TextView)findViewById(R.id.prez);
-        Button suiteBtn = (Button)findViewById(R.id.buttonSuite);
+        TextView message = findViewById(R.id.prez);
+        Button suiteBtn = findViewById(R.id.buttonSuite);
         if(message.getText().toString().contains("Salut")){
             message.setText(R.string.prez2);
         }
@@ -64,19 +68,14 @@ public class MainActivity extends AppCompatActivity {
             suiteBtn.setText(R.string.go);
         }
         Log.d("myTAG", "suiteFunction: "+message.getText());
-      
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://dasnesel.github.io/AndroidStory/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        eventsList = retrofit.create(GetEvents.class);
     }
 
-    private void getJson() {
-        Response<GetEvents> response = eventsList;
-        if (response != null) {
+    private void getJson() throws IOException {
+        Response<EventsList> response = eventsList.getEvents().execute();
+        if (response.isSuccessful()) {
             Log.d("test", "success");
         }
     }
+
 }

@@ -6,5 +6,5 @@ import retrofit2.http.GET;
 
 public interface GetEvents {
     @GET("story.json")
-    Call<EventsList> getEvents();
+    Call<EventsList> getEvents(); // à checker
 }

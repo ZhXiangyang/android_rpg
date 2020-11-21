@@ -7,5 +7,5 @@ public class EventsList {
     public int id;
     public String description;
     public String observer;
-    public List<ActionsList> actions;
+    public List<ActionsList> possibleActions;
 }
