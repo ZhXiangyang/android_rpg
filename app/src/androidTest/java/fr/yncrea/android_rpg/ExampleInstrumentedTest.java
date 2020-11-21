@@ -1,4 +1,4 @@
-package fr.yncrea.anfroid_project;
+package fr.yncrea.android_rpg;
 
 import android.content.Context;
 

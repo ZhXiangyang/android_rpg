@@ -1,4 +1,4 @@
-package fr.yncrea.anfroid_project.model;
+package fr.yncrea.android_rpg.model;
 
 import java.util.List;
 

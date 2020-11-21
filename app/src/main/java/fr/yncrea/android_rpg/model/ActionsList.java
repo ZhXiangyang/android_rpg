@@ -1,4 +1,4 @@
-package fr.yncrea.anfroid_project.model;
+package fr.yncrea.android_rpg.model;
 
 // structure of actions from the actions list and the id of the next event
 public class ActionsList {

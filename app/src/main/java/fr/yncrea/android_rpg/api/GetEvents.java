@@ -1,6 +1,6 @@
-package fr.yncrea.anfroid_project.api;
+package fr.yncrea.android_rpg.api;
 
-import fr.yncrea.anfroid_project.model.EventsList;
+import fr.yncrea.android_rpg.model.EventsList;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
