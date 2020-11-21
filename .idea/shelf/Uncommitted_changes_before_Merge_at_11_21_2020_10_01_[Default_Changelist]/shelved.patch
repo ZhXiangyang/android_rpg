@@ -1,0 +1,17 @@
+Index: app/src/main/java/fr/yncrea/anfroid_project/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package fr.yncrea.anfroid_project;\r\n\r\nimport android.os.Bundle;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport java.io.IOException;\r\nimport java.util.List;\r\nimport java.util.concurrent.Executor;\r\nimport java.util.concurrent.Executors;\r\nimport java.util.stream.Collectors;\r\nimport android.util.Log;\r\n\r\n\r\nimport retrofit2.Response;\r\nimport retrofit2.Retrofit;\r\nimport retrofit2.converter.gson.GsonConverterFactory;\r\n\r\nimport fr.yncrea.anfroid_project.model.EventsList;\r\nimport fr.yncrea.anfroid_project.api.GetEvents;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    private GetEvents eventsList;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        Retrofit retrofit = new Retrofit.Builder()\r\n                .baseUrl(\"https://dasnesel.github.io/AndroidStory/\")\r\n                .addConverterFactory(GsonConverterFactory.create())\r\n                .build();\r\n\r\n        eventsList = retrofit.create(GetEvents.class);\r\n    }\r\n\r\n    private void getJson() {\r\n        GetEvents response = eventsList;\r\n        if (response != null) {\r\n            Log.d(\"test\", \"success\");\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/fr/yncrea/anfroid_project/MainActivity.java	(revision 680ff5cd1b53e755ad185012f0511a358deee5a8)
++++ app/src/main/java/fr/yncrea/anfroid_project/MainActivity.java	(date 1605948537191)
+@@ -35,7 +35,7 @@
+     }
+ 
+     private void getJson() {
++        Response<GetEvents> response = eventsList.getEvents().execute();
+         if (response != null) {
+             Log.d("test", "success");
+         }
