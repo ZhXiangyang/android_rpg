@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
-
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
+        //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
     }
 
     public void suiteFunction(View view) {
@@ -72,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
         eventsList = retrofit.create(GetEvents.class);
     }
 
-    private void getJson() {
+    /*private void getJson() {
         Response<GetEvents> response = eventsList;
         if (response != null) {
             Log.d("test", "success");
         }
-    }
+    }*/
 }
