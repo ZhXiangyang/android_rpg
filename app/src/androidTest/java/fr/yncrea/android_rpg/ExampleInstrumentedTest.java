@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("fr.yncrea.anfroid_project", appContext.getPackageName());
+        assertEquals("fr.yncrea.android_rpg", appContext.getPackageName());
     }
 }
