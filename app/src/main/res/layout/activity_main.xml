@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/prez"
+        android:id="@+id/description"
         android:layout_width="363dp"
         android:layout_height="231dp"
         android:fontFamily="serif-monospace"
@@ -34,7 +34,7 @@
         android:onClick="suiteFunction"
         android:text="@string/suite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prez" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
 
 
