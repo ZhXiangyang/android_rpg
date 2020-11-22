@@ -4,6 +4,7 @@
  */
 package fr.yncrea.android_rpg;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +13,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
 
+import fr.yncrea.android_rpg.api.getJson;
 import fr.yncrea.android_rpg.model.Choice;
 import fr.yncrea.android_rpg.model.ChoicesList;
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -32,14 +37,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://dasnesel.github.io/AndroidStory/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        GetEvents events = getJson.getInstance().create(GetEvents.class);
+        Call<ChoicesList> call = events.getChoicesList();
+        call.enqueue(new Callback<ChoicesList>() {
+            @Override
+            public void onResponse(Call<ChoicesList> call, Response<ChoicesList> response) {
 
-        choicesList = retrofit.create(GetEvents.class);
+                //initRecyclerView(response.body());
+                //Log.d(TAG, "onResponse: " + response.body());
+                Log.d("getEvents", "*********************************** success " + response.body());
 
-        getJson();
+            }
+
+            @Override
+            public void onFailure(Call<ChoicesList> call, Throwable t) {
+                Log.w("getEvents", "*********************************** failure");
+                //Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
         // RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
     }
 
@@ -64,19 +79,5 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.d("myTAG", "suiteFunction: "+message.getText());
 
-    }
-
-    private void getJson() {
-        try {
-            Response<ChoicesList> response = choicesList.getChoicesList().execute();
-            if (response.isSuccessful()) {
-                List<Choice> choices = response.body().getChoices();
-                Log.d("getJson", "success");
-            } else {
-                Log.w("getJson", "fail");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
