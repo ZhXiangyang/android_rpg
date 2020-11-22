@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -50,7 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             observer = itemView.findViewById(R.id.observer);
             choice1 = itemView.findViewById(R.id.choix1);
             choice2 = itemView.findViewById(R.id.choix2);
-            parentlayout = itemView.findViewById(R.id.cl);
+            parentlayout = itemView.findViewById(R.id.rv_main);
         }
 
     }
@@ -89,15 +90,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.choice1.setText(mChoicesList.getChoices().get(index).getPossibleActions().get(0).getName());
         holder.choice2.setText(mChoicesList.getChoices().get(index).getPossibleActions().get(1).getName());
 
-        /*holder.choice.setText(mChoicesList.getChoices().get(0).getPossibleActions().get(2).getName());
+        //holder.choice.setText(mChoicesList.getChoices().get(0).getPossibleActions().get(2).getName());
 
-        holder.parentlayout.setOnClickListener(new View.OnClickListener() {
+        holder.choice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on: " + mChoicesList.getChoices().get(position));
+                int target = mChoicesList.getChoices().get(position).getPossibleActions().get(0).getTargetEvent();
+                Log.d(TAG, "onClick: clicked on: " + target);
+                holder.description.setText(mChoicesList.getChoices().get(target).getDescription());
+                holder.observer.setText(mChoicesList.getChoices().get(target).getObserver());
+                holder.choice1.setText(mChoicesList.getChoices().get(target).getPossibleActions().get(0).getName());
+                holder.choice2.setText(mChoicesList.getChoices().get(target).getPossibleActions().get(1).getName());
+                
 
             }
-        });*/
+        });
+        holder.choice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: clicked on: " + mChoicesList.getChoices().get(position).getPossibleActions().get(1).getTargetEvent());
+
+            }
+        });
 
 
     }
