@@ -16,13 +16,13 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.List;
 
-import fr.yncrea.android_rpg.model.ActionsList;
+import fr.yncrea.android_rpg.model.Choice;
+import fr.yncrea.android_rpg.model.ChoicesList;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import fr.yncrea.android_rpg.model.ActionsList;
-import fr.yncrea.android_rpg.model.EventsList;
+import fr.yncrea.android_rpg.model.PossibleAction;
 import fr.yncrea.android_rpg.api.GetEvents;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         eventsList = retrofit.create(GetEvents.class);
 
-        //getJson();
+        getJson();
         // RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
     }
 
@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void getJson() {
         try {
-            Response<EventsList> response = eventsList.getEvents().execute();
+            Response<ChoicesList> response = eventsList.getChoicesList().execute();
             if (response.isSuccessful()) {
-                List<ActionsList> actionsList = response.body().possibleActions;
+                List<Choice> choices = response.body().getChoices();
                 Log.d("getJson", "success");
             } else {
                 Log.w("getJson", "fail");
