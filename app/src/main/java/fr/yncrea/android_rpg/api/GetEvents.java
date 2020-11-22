@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface GetEvents {
     @GET("actions.json")
-    Call<ChoicesList> getChoicesList(); // à checker
+    Call<ChoicesList> getChoicesList();
 }

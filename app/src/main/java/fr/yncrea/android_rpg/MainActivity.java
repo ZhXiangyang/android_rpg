@@ -22,12 +22,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import fr.yncrea.android_rpg.model.PossibleAction;
 import fr.yncrea.android_rpg.api.GetEvents;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GetEvents eventsList;
+    private GetEvents choicesList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        eventsList = retrofit.create(GetEvents.class);
+        choicesList = retrofit.create(GetEvents.class);
 
         getJson();
         // RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getJson() {
         try {
-            Response<ChoicesList> response = eventsList.getChoicesList().execute();
+            Response<ChoicesList> response = choicesList.getChoicesList().execute();
             if (response.isSuccessful()) {
                 List<Choice> choices = response.body().getChoices();
                 Log.d("getJson", "success");
