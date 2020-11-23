@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 //initRecyclerView(response.body());
                 //Log.d(TAG, "onResponse: " + response.body());
                 Log.d("getEvents", "*********************************** success " + response.body());
-                List<Choice> choices = response.body().getChoices();
+                List<Choice> choices = response.body().choices;
                 Log.d("getSize", "*********************************** choices " + choices.size());
-                List<PossibleAction> possibilities = choices.get(0).getPossibleActions();
-                Log.d("getName0", "*********************************** choices " + possibilities.get(0).getName());
+                List<PossibleAction> possibilities = choices.get(0).possibleActions;
+                Log.d("getName0", "*********************************** choices " + possibilities.get(0).name);
                 //possibilities.get(0);
 
 
