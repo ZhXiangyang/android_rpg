@@ -1,9 +1,13 @@
 package fr.yncrea.android_rpg;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,8 +47,9 @@ public class GameController extends AppCompatActivity {
                 dynamicTextView.setText(" Hello World ");
                 dynamicTextView.setTextColor(Color.WHITE);
                 (View)findViewById(R.id.rv).addView(dynamicTextView);*/
+                //RecyclerView rv = (RecyclerView) findViewById(R.id.rv_main);
+                initRecyclerViews(response.body(), 0);
 
-                initRecyclerView(response.body(), 0);
                 /*RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
                 TextView description = (TextView)findViewById(R.id.textView);
                 description.setText(choices.get(0).getDescription());
@@ -74,14 +79,23 @@ public class GameController extends AppCompatActivity {
 
     }
 
-    private void initRecyclerView(ChoicesList mChoices, int pos){
+    private void initRecyclerViews(ChoicesList mChoices, int pos){
         RecyclerView rv = (RecyclerView) findViewById(R.id.rv_main);
-
+        //ConstraintLayout rv_main = (ConstraintLayout) findViewById(R.id.textviews);
         Log.d("initRecyclerView", "execution");
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(mChoices, this, pos);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
+        /*Button clickChoix1 = (Button)rv_main.findViewById(R.id.choix1);
+        int choix1Fait = mChoices.getChoices().get(pos).getPossibleActions().get(0).getTargetEvent();
+        clickChoix1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("click in game controller", "onClick: clicked on: " + mChoices.getChoices().get(pos).getPossibleActions().get(0).getTargetEvent());
+                initRecyclerView(mChoices, choix1Fait);
+            }
+        });*/
 
     }
 }

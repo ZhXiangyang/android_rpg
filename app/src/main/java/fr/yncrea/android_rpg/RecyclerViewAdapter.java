@@ -85,10 +85,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Log.d(TAG, "onBindViewHolder called");
 
 
-        holder.description.setText(mChoicesList.getChoices().get(index).getDescription());
-        holder.observer.setText(mChoicesList.getChoices().get(index).getObserver());
-        holder.choice1.setText(mChoicesList.getChoices().get(index).getPossibleActions().get(0).getName());
-        holder.choice2.setText(mChoicesList.getChoices().get(index).getPossibleActions().get(1).getName());
+        holder.description.setText(mChoicesList.getChoices().get(position).getDescription());
+        holder.observer.setText(mChoicesList.getChoices().get(position).getObserver());
+        holder.choice1.setText(mChoicesList.getChoices().get(position).getPossibleActions().get(0).getName());
+        holder.choice2.setText(mChoicesList.getChoices().get(position).getPossibleActions().get(1).getName());
 
         //holder.choice.setText(mChoicesList.getChoices().get(0).getPossibleActions().get(2).getName());
 
@@ -97,12 +97,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 int target = mChoicesList.getChoices().get(position).getPossibleActions().get(0).getTargetEvent();
                 Log.d(TAG, "onClick: clicked on: " + target);
+                onBindViewHolder(holder, target);
+                //v.findViewById()
+                //RecyclerView rv = (RecyclerView) v.findViewById(R.id.rv_main);
+                //initRecyclerView.initRecyclerViewer(rv, mContext, mChoicesList, target);
+                /*Log.d(TAG, "onClick: clicked on: " + target);
+
                 holder.description.setText(mChoicesList.getChoices().get(target).getDescription());
                 holder.observer.setText(mChoicesList.getChoices().get(target).getObserver());
                 holder.choice1.setText(mChoicesList.getChoices().get(target).getPossibleActions().get(0).getName());
-                holder.choice2.setText(mChoicesList.getChoices().get(target).getPossibleActions().get(1).getName());
-                
-
+                holder.choice2.setText(mChoicesList.getChoices().get(target).getPossibleActions().get(1).getName());*/
             }
         });
         holder.choice2.setOnClickListener(new View.OnClickListener() {
