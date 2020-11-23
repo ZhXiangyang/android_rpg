@@ -1,31 +1,19 @@
 package fr.yncrea.android_rpg.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "possibleaction")
 public class PossibleAction {
-
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("targetEvent")
-    @Expose
-    private Integer targetEvent;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getTargetEvent() {
-        return targetEvent;
-    }
-
-    public void setTargetEvent(Integer targetEvent) {
-        this.targetEvent = targetEvent;
-    }
+    @PrimaryKey(autoGenerate = true)
+    public int uid;
+    @ColumnInfo(name = "name")
+    public String name;
+    @ColumnInfo(name = "target")
+    public Integer targetEvent;
 
 }

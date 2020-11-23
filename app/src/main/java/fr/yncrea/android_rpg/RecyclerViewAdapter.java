@@ -85,23 +85,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Log.d(TAG, "onBindViewHolder called");
 
 
-        holder.description.setText(mChoicesList.getChoices().get(position).getDescription());
-        holder.observer.setText(mChoicesList.getChoices().get(position).getObserver());
-        holder.choice1.setText(mChoicesList.getChoices().get(position).getPossibleActions().get(0).getName());
-        holder.choice2.setText(mChoicesList.getChoices().get(position).getPossibleActions().get(1).getName());
+
+        holder.description.setText(mChoicesList.choices.get(position).description);
+        holder.observer.setText(mChoicesList.choices.get(position).observer);
+        holder.choice1.setText(mChoicesList.choices.get(position).possibleActions.get(0).name);
+        holder.choice2.setText(mChoicesList.choices.get(position).possibleActions.get(1).name);
 
         holder.choice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int target = mChoicesList.getChoices().get(position).getPossibleActions().get(0).getTargetEvent();
+                int target = mChoicesList.choices.get(position).possibleActions.get(0).targetEvent;
                 Log.d(TAG, "onClick: clicked on: " + target);
+
+
                 onBindViewHolder(holder, target);
             }
         });
         holder.choice2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int target = mChoicesList.getChoices().get(position).getPossibleActions().get(1).getTargetEvent();
+                int target = mChoicesList.choices.get(position).possibleActions.get(1).targetEvent;
                 Log.d(TAG, "onClick: clicked on: " + target);
                 onBindViewHolder(holder, target);
             }

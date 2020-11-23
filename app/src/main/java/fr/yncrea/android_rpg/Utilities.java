@@ -141,8 +141,8 @@ public class Utilities {
                 return null;
             }
         };
-        messages.add(situation.get(index).getDescription());
-        messages.add(situation.get(index).getObserver());
+        messages.add(situation.get(index).description);
+        messages.add(situation.get(index).observer);
         return messages;
     }
 
@@ -269,8 +269,8 @@ public class Utilities {
                 return null;
             }
         };
-        for(int i = 0; i < situation.get(index).getPossibleActions().size(); i++){
-            choices.add(situation.get(index).getPossibleActions().get(i).getName());
+        for(int i = 0; i < situation.get(index).possibleActions.size(); i++){
+            choices.add(situation.get(index).possibleActions.get(i).name);
         }
         return choices;
     }
