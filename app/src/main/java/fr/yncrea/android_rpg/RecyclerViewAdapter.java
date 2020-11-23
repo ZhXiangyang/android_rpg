@@ -112,8 +112,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.choice2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on: " + mChoicesList.getChoices().get(position).getPossibleActions().get(1).getTargetEvent());
-
+                int target = mChoicesList.getChoices().get(position).getPossibleActions().get(1).getTargetEvent();
+                Log.d(TAG, "onClick: clicked on: " + target);
+                onBindViewHolder(holder, target);
             }
         });
 
