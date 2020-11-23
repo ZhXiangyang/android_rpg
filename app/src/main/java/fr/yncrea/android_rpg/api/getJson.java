@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class getJson {
 
-    public static final String BASE_URL = "https://dasnesel.github.io/AndroidStory/";
+    public static final String BASE_URL = "https://jarjarbinksisen.github.io/Adventure101/";
     public static Retrofit retrofit;
 
     public static Retrofit getInstance() {
