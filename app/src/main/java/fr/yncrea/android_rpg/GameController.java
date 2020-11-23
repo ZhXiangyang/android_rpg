@@ -56,15 +56,19 @@ public class GameController extends AppCompatActivity {
                     List<PossibleAction> possibilities = choices.get(0).possibleActions;
                     Log.d("getName0", "*********************************** choices " + possibilities.get(0).name);
 
-                    //db.storyDao().insert("possibleaction", );
 
                     backgroundExecutor.execute(() -> {
-                        appDb.storyDao().insert(possibilities.get(1));
+                        for(int i = 0; i < choices.size(); i++){
+                            appDb.storyDao().insert(choices.get(i).possibleActions.get(0));
+                            appDb.storyDao().insert(choices.get(i).possibleActions.get(1));
+                        }
                         Log.d("db_test", "succes db insert");
                     });
 
-
-
+                    /*backgroundExecutor.execute(() -> {
+                        PossibleAction getFromDb = appDb.storyDao().getAll().get(7);
+                        Log.d("affich_db", "uid : " + getFromDb.uid + ", name : " + getFromDb.name + ", target : " + getFromDb.targetEvent);
+                    });*/
 
                     initRecyclerViews(response.body(), 0);
 
