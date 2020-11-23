@@ -13,6 +13,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.List;
+
+import fr.yncrea.android_rpg.api.getJson;
+import fr.yncrea.android_rpg.model.Choice;
+import fr.yncrea.android_rpg.model.ChoicesList;
+import fr.yncrea.android_rpg.model.PossibleAction;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import fr.yncrea.android_rpg.api.GetEvents;
 
@@ -26,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*GetEvents events = getJson.getInstance().create(GetEvents.class);
+        GetEvents events = getJson.getInstance().create(GetEvents.class);
         Call<ChoicesList> call = events.getChoicesList();
         call.enqueue(new Callback<ChoicesList>() {
             @Override
@@ -49,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.w("getEvents", "*********************************** failure");
                 //Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
-        });*/
+        });
         // RecyclerView recyclerView = (RecyclerView) findViewById(R.id.buttonSuite);
     }
 

@@ -17,5 +17,5 @@ public class getJson {
         }
         return retrofit;
     }
-    public GetEvents create(Class<GetEvents> retrofitInterfaceClass) { return null;}
+    public GetEvents create(Class<GetEvents> retrofitInterfaceClass) { return null; }
 }
