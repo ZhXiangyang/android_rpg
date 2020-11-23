@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/presentation"
         android:layout_width="363dp"
         android:layout_height="231dp"
         android:fontFamily="serif-monospace"
@@ -29,13 +29,12 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="144dp"
         android:layout_marginTop="68dp"
         android:onClick="suiteFunction"
         android:text="@string/suite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
-
+        app:layout_constraintTop_toBottomOf="@+id/presentation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

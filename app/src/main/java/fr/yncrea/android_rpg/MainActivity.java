@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void suiteFunction(View view) {
-        TextView message = findViewById(R.id.description);
+        TextView message = findViewById(R.id.presentation);
         Button suiteBtn = findViewById(R.id.buttonSuite);
         if(message.getText().toString().contains("Salut")){
             message.setText(R.string.prez2);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(message.getText().toString().contains("grossiers")){
             Intent intent = new Intent(this, GameController.class);
-            TextView editText = (TextView) findViewById(R.id.description);
+            TextView editText = (TextView) findViewById(R.id.presentation);
             String msg = editText.getText().toString();
             intent.putExtra(EXTRA_MESSAGE, msg);
             startActivity(intent);
