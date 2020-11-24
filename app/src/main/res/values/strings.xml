@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">android_rpg</string>
+    <string name="app_name">Adventure101</string>
     <string name="suite">Suite</string>
     <string name="go">C\'est Parti</string>
     <string name="prez1">Salut cher joueur ! ☺\n\nDans ce jeu, tu vas incarner le personnage Jean Ti.</string>

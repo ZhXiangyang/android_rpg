@@ -1,4 +1,4 @@
-package fr.yncrea.android_rpg.api;
+package fr.yncrea.Adventure101.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

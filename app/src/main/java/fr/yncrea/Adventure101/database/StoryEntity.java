@@ -1,4 +1,4 @@
-package fr.yncrea.android_rpg.database;
+package fr.yncrea.Adventure101.database;
 
 import android.content.Context;
 
@@ -6,8 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import fr.yncrea.android_rpg.dao.StoryDao;
-import fr.yncrea.android_rpg.model.PossibleAction;
+import fr.yncrea.Adventure101.dao.StoryDao;
+import fr.yncrea.Adventure101.model.PossibleAction;
 
 @Database(entities = {PossibleAction.class}, version = 2)
 public abstract class StoryEntity extends RoomDatabase {

@@ -1,4 +1,4 @@
-package fr.yncrea.android_rpg;
+package fr.yncrea.Adventure101;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import fr.yncrea.android_rpg.model.ChoicesList;
+import fr.yncrea.Adventure101.model.ChoicesList;
 
 public class initRecyclerView extends AppCompatActivity {
     public static void initRecyclerViewer(RecyclerView recycler, Context mContext,ChoicesList mChoices, int pos){

@@ -1,20 +1,14 @@
-package fr.yncrea.android_rpg;
-
-import android.content.Context;
-import android.widget.TextView;
+package fr.yncrea.Adventure101;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import org.w3c.dom.Text;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import fr.yncrea.android_rpg.model.Choice;
-import fr.yncrea.android_rpg.model.ChoicesList;
+import fr.yncrea.Adventure101.model.Choice;
 
 public class Utilities {
 

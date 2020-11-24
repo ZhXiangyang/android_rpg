@@ -1,4 +1,4 @@
-package fr.yncrea.android_rpg;
+package fr.yncrea.Adventure101;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,24 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import fr.yncrea.android_rpg.model.ChoicesList;
+import fr.yncrea.Adventure101.model.ChoicesList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
 
-    private ChoicesList mChoicesList;
-    private Context mContext;
-    private int index;
+    private final ChoicesList mChoicesList;
+    private final Context mContext;
+    private final int index;
 
     private static final int FIRST_LIST_ITEM_VIEW = 1;
     private static final int SECOND_LIST_ITEM_VIEW = 2;

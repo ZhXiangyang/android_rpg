@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId 'fr.yncrea.android_rpg'
+        applicationId 'fr.yncrea.Adventure101'
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1

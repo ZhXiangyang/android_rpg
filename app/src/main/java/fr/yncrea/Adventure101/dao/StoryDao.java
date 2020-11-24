@@ -1,4 +1,4 @@
-package fr.yncrea.android_rpg.dao;
+package fr.yncrea.Adventure101.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,7 +7,7 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import fr.yncrea.android_rpg.model.PossibleAction;
+import fr.yncrea.Adventure101.model.PossibleAction;
 
 @Dao
 public interface StoryDao {

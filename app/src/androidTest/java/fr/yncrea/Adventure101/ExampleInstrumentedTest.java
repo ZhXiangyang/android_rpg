@@ -1,4 +1,4 @@
-package fr.yncrea.android_rpg;
+package fr.yncrea.Adventure101;
 
 import android.content.Context;
 

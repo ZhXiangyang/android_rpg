@@ -2,7 +2,7 @@
  *      Android Project
  *      BASSEZ Martin, BRUGE Fabien, LICETTE Matthieu, TE Nicolas
  */
-package fr.yncrea.android_rpg;
+package fr.yncrea.Adventure101;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,22 +13,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.List;
 
-import fr.yncrea.android_rpg.api.getJson;
-import fr.yncrea.android_rpg.model.Choice;
-import fr.yncrea.android_rpg.model.ChoicesList;
-import fr.yncrea.android_rpg.model.PossibleAction;
+import fr.yncrea.Adventure101.api.getJson;
+import fr.yncrea.Adventure101.model.Choice;
+import fr.yncrea.Adventure101.model.ChoicesList;
+import fr.yncrea.Adventure101.model.PossibleAction;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-import fr.yncrea.android_rpg.api.GetEvents;
+import fr.yncrea.Adventure101.api.GetEvents;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -88,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(message.getText().toString().contains("grossiers")){
             Intent intent = new Intent(this, GameController.class);
-            TextView editText = (TextView) findViewById(R.id.presentation);
+            TextView editText = findViewById(R.id.presentation);
             String msg = editText.getText().toString();
             intent.putExtra(EXTRA_MESSAGE, msg);
             startActivity(intent);
