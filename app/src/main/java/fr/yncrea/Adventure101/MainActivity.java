@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Affichage des différents messages de présentation du jeu
     public void suiteFunction(View view) {
         TextView message = findViewById(R.id.presentation);
         Button suiteBtn = findViewById(R.id.buttonSuite);

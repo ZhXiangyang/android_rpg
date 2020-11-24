@@ -23,16 +23,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private final Context mContext;
     private final int index;
 
-    private static final int FIRST_LIST_ITEM_VIEW = 1;
-    private static final int SECOND_LIST_ITEM_VIEW = 2;
-
     private static final String TAG = "RecyclerViewAdapter";
-
-    private List<String> firstList = null;
-    private List<String> secondList = null;
-
-    public void setFirstList(List<String> firstList) { this.firstList = firstList; }
-    public void setSecondList(List<String> secondList) { this.secondList = secondList; }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -43,6 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView description;
         TextView observer;
 
+        // Récupération des éléments des layouts à ajouter et modifier dans le RecyclerView
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             description = itemView.findViewById(R.id.description);
@@ -54,14 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }
 
-    private class FirstListItemViewHolder extends ViewHolder{
-        public FirstListItemViewHolder(View itemView) { super(itemView); }
-    }
-    private class SecondListItemViewHolder extends ViewHolder{
-        public SecondListItemViewHolder(View itemView) { super(itemView); }
-    }
-
-
+    // Constructeur du RecyclerView prenant en paramètre la liste des choix et l'index du choix présent
     public RecyclerViewAdapter(ChoicesList mChoicesList, Context mContext, int index) {
         this.mChoicesList = mChoicesList;
         this.mContext = mContext;
@@ -73,6 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d("onCreateViewHolder", "inflate");
 
+        // Préparation à l'afficheage des nouveaux éléments dans le RecyclerView
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.game_textviews, parent, false);
         RecyclerView.ViewHolder holder = new ViewHolder(view);
         return (ViewHolder) holder;
@@ -82,30 +68,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder called");
 
-
-
+        // Mis à jour des éléments du layout
         holder.description.setText(mChoicesList.choices.get(position).description);
         holder.observer.setText(mChoicesList.choices.get(position).observer);
         holder.choice1.setText(mChoicesList.choices.get(position).possibleActions.get(0).name);
         holder.choice2.setText(mChoicesList.choices.get(position).possibleActions.get(1).name);
 
-        holder.choice1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int target = mChoicesList.choices.get(position).possibleActions.get(0).targetEvent;
-                Log.d(TAG, "onClick: clicked on: " + target);
+        // Listener sur les boutons choix qui mettront à jour le RecyclerView avec le choix fait
+        holder.choice1.setOnClickListener(v -> {
+            int target = mChoicesList.choices.get(position).possibleActions.get(0).targetEvent;
+            Log.d(TAG, "onClick: clicked on: " + target);
 
-
-                onBindViewHolder(holder, target);
-            }
+            onBindViewHolder(holder, target);
         });
-        holder.choice2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int target = mChoicesList.choices.get(position).possibleActions.get(1).targetEvent;
-                Log.d(TAG, "onClick: clicked on: " + target);
-                onBindViewHolder(holder, target);
-            }
+        holder.choice2.setOnClickListener(v -> {
+            int target = mChoicesList.choices.get(position).possibleActions.get(1).targetEvent;
+            Log.d(TAG, "onClick: clicked on: " + target);
+
+            onBindViewHolder(holder, target);
         });
 
 
