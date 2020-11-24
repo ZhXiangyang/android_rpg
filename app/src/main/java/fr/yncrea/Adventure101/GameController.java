@@ -46,9 +46,9 @@ public class GameController extends AppCompatActivity {
                     //Log.d(TAG, "onResponse: " + response.body());
                     Log.d("getEvents", "*********************************** success " + response.body());
                     List<Choice> choices = response.body().choices;
-                    Log.d("getSize", "*********************************** choices " + choices.size());
+                    Log.d("getSize", "*********************************** " + choices.size() + " choices");
                     List<PossibleAction> possibilities = choices.get(0).possibleActions;
-                    Log.d("getName0", "*********************************** choices " + possibilities.get(0).name);
+                    Log.d("getName0", "*********************************** choice 0 : " + possibilities.get(0).name);
 
 
                     backgroundExecutor.execute(() -> {
